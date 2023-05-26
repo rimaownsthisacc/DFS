@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">timeit </span><span class="s0">import </span><span class="s1">default_timer </span><span class="s0">as </span><span class="s1">timer</span>
+<span class="s1">start </span><span class="s2">= </span><span class="s1">timer</span><span class="s2">()</span>
+
+<span class="s1">graph </span><span class="s2">= {</span>
+    <span class="s3">'A'</span><span class="s2">: [</span><span class="s3">'B'</span><span class="s2">, </span><span class="s3">'C'</span><span class="s2">],</span>
+    <span class="s3">'B'</span><span class="s2">: [</span><span class="s3">'D'</span><span class="s2">, </span><span class="s3">'E'</span><span class="s2">],</span>
+    <span class="s3">'C'</span><span class="s2">: [</span><span class="s3">'F'</span><span class="s2">],</span>
+    <span class="s3">'D'</span><span class="s2">: [],</span>
+    <span class="s3">'E'</span><span class="s2">: [</span><span class="s3">'F'</span><span class="s2">],</span>
+    <span class="s3">'F'</span><span class="s2">: [</span><span class="s3">'G'</span><span class="s2">],</span>
+    <span class="s3">'G'</span><span class="s2">: [</span><span class="s3">'E'</span><span class="s2">,</span><span class="s3">'H'</span><span class="s2">],</span>
+    <span class="s3">'H'</span><span class="s2">: [</span><span class="s3">'G'</span><span class="s2">, </span><span class="s3">'E'</span><span class="s2">, </span><span class="s3">'A'</span><span class="s2">]</span>
+<span class="s2">}</span>
+
+<span class="s1">visited </span><span class="s2">= </span><span class="s1">set</span><span class="s2">()  </span><span class="s4"># Set to keep track of visited nodes.</span>
+<span class="s0">def </span><span class="s1">dfs</span><span class="s2">(</span><span class="s1">visited</span><span class="s2">, </span><span class="s1">graph</span><span class="s2">, </span><span class="s1">node</span><span class="s2">):</span>
+    <span class="s0">if </span><span class="s1">node </span><span class="s0">not in </span><span class="s1">visited</span><span class="s2">:</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s1">node</span><span class="s2">)</span>
+        <span class="s1">visited</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">node</span><span class="s2">)</span>
+        <span class="s0">for </span><span class="s1">neighbour </span><span class="s0">in </span><span class="s1">graph</span><span class="s2">[</span><span class="s1">node</span><span class="s2">]:</span>
+            <span class="s1">dfs</span><span class="s2">(</span><span class="s1">visited</span><span class="s2">, </span><span class="s1">graph</span><span class="s2">, </span><span class="s1">neighbour</span><span class="s2">)</span>
+
+
+<span class="s4"># Driver Code</span>
+<span class="s1">dfs</span><span class="s2">(</span><span class="s1">visited</span><span class="s2">, </span><span class="s1">graph</span><span class="s2">, </span><span class="s3">'A'</span><span class="s2">)</span>
+<span class="s1">end </span><span class="s2">= </span><span class="s1">timer</span><span class="s2">()</span>
+<span class="s1">res </span><span class="s2">= </span><span class="s1">end </span><span class="s2">- </span><span class="s1">start</span>
+<span class="s1">final_time </span><span class="s2">= </span><span class="s1">res </span><span class="s2">* </span><span class="s5">1000</span>
+<span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;the execution time is = &quot;</span><span class="s2">, </span><span class="s1">final_time</span><span class="s2">)</span>
+</pre>
+</body>
+</html>
